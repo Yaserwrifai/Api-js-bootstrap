@@ -10,9 +10,14 @@
 
 const api="https://www.breakingbadapi.com/api/characters/";
 async function getData(){
+try{
     const response = await fetch(api);
     const data=await response.json();
+    //console.log(data)
     printData(data)
+}catch(e){
+console.log("Error : ",e.message)
+}
     } 
 
 function printData(data){
@@ -20,31 +25,23 @@ function printData(data){
     const content=document.querySelector("#content")
 
     header.innerHTML +=`
-    <select class="form-control">
+    <select class="form-control" onchange="getCh(this.value)">
     <option>Please select an actor</option>
     ${data.map(charachter=>`<option>${charachter.name}</option>`)}
     </select>`
-    console.log(header);
+    
 }
-
-
-
+async function getCh(name){
+    if(name !="Please select an actor"){
+    const response = await fetch(`${api}?name=${name}`);
+    const data=await response.json();
+    
+    content.innerHTML=`<h2>${data[0].name} (${data[0].nickname})</h2>
+    <h4>${data[0].portrayed} </h4>
+    <img src="${data[0].img}" width="250" >
+    `
+}
+}
     getData();
 
-    /*document.querySelector("#content h1").innerHTML=data[0].name;
-    document.querySelector("#content h5").innerHTML=data[0].birthday;
-    document.querySelector("#content img").src=data[0].img;
-
-    document.querySelector("#actor").innerHTML=`
-    <select name="" id="">
-    ${
-        data.map(actor =>`<option value="">${actor.name}</option>`)
-    }
-    
-            
-        </select>
-    
-    `;
- 
-}
-*/
+   
