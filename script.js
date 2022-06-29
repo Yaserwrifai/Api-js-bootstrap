@@ -46,12 +46,14 @@ async function getCh(name){
     <div class="card-body">
       <h4 class="card-title alert alert-success">${data[0].name}(${data[0].nickname})</h4>
       <h4 class="alert-danger">${data[0].portrayed} </h4>
-      <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-
-
-      
+     <a href="#" class="btn btn-primary stretched-link">See Profile</a>  
+     
     </div>
   </div>
+
+
+  
+
   `
 
 
