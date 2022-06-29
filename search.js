@@ -1,19 +1,51 @@
-var table = document.createElement('table');
-for (var i = 1; i < 4; i++) {
-    var tr = document.createElement('tr');
+fetch("https://www.breakingbadapi.com/api/characters/").then(
+    res => {
+        res.json().then(
+            data => {
+                console.log(data);
 
-    var td1 = document.createElement('td');
-    var td2 = document.createElement('td');
+                if (data.length > 0) {
+                    var temp = "";
 
-    var text1 = document.createTextNode('Text1');
-    var text2 = document.createTextNode('Text2');
+                    //start for loop
 
-    td1.appendChild(text1);
-    td2.appendChild(text2);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
+                    data.forEach((u) => {
+                            temp += "<tr>";
+                            temp += "<td>" + u.char_id + "</td>";
+                            temp += "<td>" + u.name + "</td>";
+                            temp += "<td>" + u.birthday + "</td>";
+                        })
+                        //close for  loop
 
-    table.appendChild(tr);
-}
-document.body.appendChild(table);
-console.log(data)
+                    document.getElementById("tdata").innerHTML = temp;
+
+                }
+
+
+            }
+        )
+    }
+
+)
+
+$(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#tdata tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+
+
+/*
+const myCollapsible = document.getElementById("collapseExample");
+myCollapsible.addEventListener("hide.bs.collapse", (event) => {
+    button.innerHTML = "Read more";
+  });
+  
+  const myCollapsibleTwop = document.getElementById("collapseExample");
+  myCollapsible.addEventListener("show.bs.collapse", (event) => {
+    button.innerHTML = "Read less";
+
+    */
