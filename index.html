@@ -17,46 +17,50 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home
+    <div class="container-fluid">
+        <!-- nav bar -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="search.html">Search</a>
-            </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="search.html">Search</a>
+                </li>
 
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Others
-            </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">About</a>
-                    <a class="dropdown-item" href="#">Contact</a>
-                    <a class="dropdown-item" href="#">Others</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Others
+                </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">About</a>
+                        <a class="dropdown-item" href="#">Contact</a>
+                        <a class="dropdown-item" href="#">Others</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--   navbar end-->
+    </div>
 
     <div class="container">
+        <!-- Header ....................................................  -->
         <div id="header">
-            <h1>BREAKING BAD API</h1>
+            <h1> Header : BREAKING BAD API</h1>
+            <select class="form-control" name="characters" id="select">
+                <option value="all">all</option>
+            </select>
         </div>
-        <div class="row clearfix">
-            <div id="content" class=" col-sm-5 col-md-6 col-lg-4 float-left">
 
-
+        <div class="row m-3">
+            <div class="card" id="cardid" style="width:400px">
 
             </div>
-            <div class="col-sm-7 col-md-6 col-lg-8 floar-right">
-                Text Here...............................
-            </div>
         </div>
+
     </div>
 
 
