@@ -55,16 +55,23 @@ function printData(data) {
 
     );
 
+
+}
+getData();
+
+
+//=====================================================================
+/*
     select.addEventListener("change", (event) => {
         console.log(event.target.value);
         const charachterName = event.target.value
-
+ fetchCharacter(charachterName)
     })
-}
-// fetchCharacter(charachterName)
 
 
-//-----------------------------------
+
+
+
 async function getCh(name) {
     if (name != "Please select an actor") {
         const response = await fetch(`https://www.breakingbadapi.com/api/characters?name=${name}`);
@@ -73,4 +80,4 @@ async function getCh(name) {
     return data.name
 }
 
-getData();
+*/
