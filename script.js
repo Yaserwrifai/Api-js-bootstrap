@@ -38,18 +38,18 @@ function printData(data) {
 
             let p = document.createElement("p");
             cardBody.classList.add("card-text");
-            p.innerHTML = element.birthady;
+            p.innerHTML = element.birthday
 
-            let myButton = document.createElement("a");
+            //let myButton = document.createElement("a");
 
 
-
-            cardBody.appendChild(p);
+            mycard.appendChild(img);
             cardBody.appendChild(h5);
-            cardBody.appendChild(myButton);
+            cardBody.appendChild(p);
+            // cardBody.appendChild(myButton);
 
             mycard.appendChild(cardBody);
-            mycard.appendChild(img);
+
 
         }
 
