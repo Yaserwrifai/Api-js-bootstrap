@@ -13,8 +13,8 @@ async function getData() {
     }
 }
 getData();
-
-// 2-print data in header and in content of Page
+//....................................................................................................................
+// 2-print data in select tag
 function printData(data) {
     const select = document.getElementById("select");
     data.forEach((element) => {
@@ -22,35 +22,29 @@ function printData(data) {
         myOption.value = element.name
         myOption.innerHTML = element.name
         select.appendChild(myOption)
-
     })
+
 }
 
-
+//....................................................................................................................
+// 2-filter data according Name 
 function fetchCharacter(data) {
     select = document.getElementById("select");
     select.addEventListener("change", (event) => {
-        //console.log(data)
-        // const charachterName = event.target.value;
-        // console.log(event.target.value);
+        console.log('you clicked a character :>> ');
         const filterCharacters = data.filter(item => {
-                return event.target.value === item.name;
-            })
-            // const filterCharacters = (charactersList, selectedCharacter) => {}
-        console.log("filterCharacter : >", filterCharacters)
-
-        //printData(filterCharacters)
+            return item.name === event.target.value;
+        })
         createCard(filterCharacters)
-
-
     })
 }
-
+//....................................................................................................................
+// 3- createCard  and data in it
 
 function createCard(ele) {
     const mycard = document.getElementById("cardid");
-    // mycard.Node.removeChild(mycard)
     mycard.innerHTML = "";
+
     let img = document.createElement("img");
     img.setAttribute("src", ele[0].img);
     img.setAttribute("alt", "Not found");
@@ -59,23 +53,50 @@ function createCard(ele) {
     let cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
 
-    let h5 = document.createElement("h5");
-    cardBody.classList.add("card-title");
-    h5.innerHTML = ele[0].name;
+    let h3 = document.createElement("h3");
+    h3.classList.add("card-title");
+    h3.innerHTML = ele[0].name;
 
     let p = document.createElement("p");
-    cardBody.classList.add("card-text");
-    p.innerHTML = ele[0].birthday
+    p.classList.add("card-text");
+    if (ele[0].birthday == "Unknown") { p.innerHTML = "Birth unknown in the data" } else { p.innerHTML = ele[0].birthday }
 
-    //let myButton = document.createElement("a");
+    let myButton = document.createElement("a");
+    myButton.classList.add("btn");
+    myButton.classList.add("btn-primary");
 
+    myButton.innerHTML = "See More";
+    myButton.addEventListener("click", () => {
+        if (myButton.innerHTML === "See More") {
+            myButton.innerHTML = "See Less";
+        } else {
+            myButton.innerHTML = "See More"
+        }
+    })
+    myButton.setAttribute("data-toggle", "collapse")
+    myButton.setAttribute("data-target", "#demo")
 
+    let mycollapse = document.createElement("div");
+    mycollapse.classList.add("collapse");
+    mycollapse.setAttribute("id", "demo")
+
+    let p1 = document.createElement("p");
+    p1.innerHTML = "What is the job? : " + ele[0].occupation[0];
+    mycollapse.appendChild(p1);
+    p1.classList.add("px-4");
+
+    let p2 = document.createElement("p");
+    p2.innerHTML = "Is he alive? : " + ele[0].status;
+    mycollapse.appendChild(p2);
+    p2.classList.add("px-4");
+    //--------------------------------------------------------
     mycard.appendChild(img);
-    cardBody.appendChild(h5);
+    cardBody.appendChild(h3);
     cardBody.appendChild(p);
-    //cardBody.appendChild(myButton);
+    cardBody.appendChild(myButton);
 
     mycard.appendChild(cardBody);
-
+    mycard.appendChild(mycollapse);
+    //------------------------------------------------------
 
 }

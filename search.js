@@ -36,16 +36,3 @@ $(document).ready(function() {
         });
     });
 });
-
-
-/*
-const myCollapsible = document.getElementById("collapseExample");
-myCollapsible.addEventListener("hide.bs.collapse", (event) => {
-    button.innerHTML = "Read more";
-  });
-  
-  const myCollapsibleTwop = document.getElementById("collapseExample");
-  myCollapsible.addEventListener("show.bs.collapse", (event) => {
-    button.innerHTML = "Read less";
-
-    */
