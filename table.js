@@ -44,6 +44,12 @@ const createHtmlTable = (data) => {
 
         let column = document.createElement("td");
         column.innerHTML = ele.name;
+        a = document.createElement("a");
+        a.setAttribute("href", "http://127.0.0.1:5501/cards.html?elem=Saul Goodman");
+        a.classList.add("btn")
+        column.appendChild(a)
+
+
         row.appendChild(column);
 
         let column2 = document.createElement("td");
