@@ -1,5 +1,5 @@
-body {
-    background: url('./picture/5.jpg') no-repeat center center fixed;
+.body1 {
+    background: url('./picture/poster.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -7,4 +7,24 @@ body {
     color: #fff;
     background-color: #333;
     font-family: 'Open Sans', Arial, Helvetica, Sans-Serif;
+}
+
+.button1 {
+    margin-top: 540px;
+    margin-left: 900px;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 100px;
+}
+
+.mycenter {
+    text-align: center;
+    color: red;
 }

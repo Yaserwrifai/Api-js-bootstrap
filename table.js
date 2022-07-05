@@ -110,7 +110,7 @@ const filterByDropDown = (data) => {
 //7
 function check() {
     if (document.getElementById("alive").checked == true) {
-       
+
     };
 }
 check()
