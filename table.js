@@ -10,7 +10,8 @@ const getDataAsync = async() => {
         //filterByDate(data)
         //createHtmlTable(data)
         //createDropDown(data)
-        filterByDropDown(data)
+        // filterByDropDown(data)
+        // constfilterradio(data)
         return data;
     } catch (error) {
         console.log("error", error);
@@ -44,13 +45,16 @@ const createHtmlTable = (data) => {
 
         let column = document.createElement("td");
         column.innerHTML = ele.name;
-        a = document.createElement("a");
-        a.setAttribute("href", "http://127.0.0.1:5501/cards.html?elem=Saul Goodman");
-        a.classList.add("btn")
-        column.appendChild(a)
-
-
+        // a = document.createElement("a");
+        // //;;;;;;;;;;;;;;;;;;
+        // window.addEventListener('click', (event) => {
+        //     window.location.href = "http://127.0.0.1:5501/cards.html";
+        //     getData();
+        // });
+        // a.classList.add("btn")
+        // column.appendChild(a)
         row.appendChild(column);
+
 
         let column2 = document.createElement("td");
         column2.innerHTML = ele.occupation;
@@ -91,6 +95,7 @@ async function controller() {
     createHtmlTable(data);
     createDropDown(data);
     createEvent(data)
+    filterradio(data)
 }
 controller()
 
@@ -98,7 +103,8 @@ const createEvent = (data) => {
     const contactSelect = document.getElementById("bad-id")
     contactSelect.addEventListener("change", (event) => {
         console.log(event.target.value)
-        filterByDropDown(data)
+            // filterByDropDown(data)
+        filtersCombined(data)
     })
 }
 
@@ -114,13 +120,43 @@ const filterByDropDown = (data) => {
 };
 
 //7
-function check() {
-    if (document.getElementById("alive").checked == true) {
 
-    };
+const filterradio = (data) => {
+    const radios = document.querySelectorAll("input[type='radio']");
+    // const radioValue = document.querySelectorAll("input[type='radio']").value
+    console.log("radios :>> ", radios);
+    radios.forEach((radio) => {
+
+        radio.addEventListener("click", (event) => {
+            console.log("radio clicked", radio.value);
+
+            // console.log(event.target.value);
+            const filtered1 = data.filter((item) => {
+                return item.status === event.target.value;
+            });
+            // console.log("filtered1", filtered1);
+            // console.log("data", data);
+            event.target.value === "All" ? createHtmlTable(data) : createHtmlTable(filtered1);
+            //createHtmlTable(filtered1);
+            // console.log("event.target.value =", event.target.value);
+
+        });
+    });
 }
-check()
 
-function uncheck() {
-    document.getElementById("alive").checked = false;
+const filtersCombined = (data) => {
+
+    // get the dropdown/select value
+    const dropDownValue = document.querySelector("#bad-id").value;
+
+    //get the clicked radio button value
+
+    //filter all the data  ..and in the return include both conditions
+
+    const filtered = data.filter((item) => {
+        return (item.name === dropDownValue || dropDownValue === "all");
+    });
+
+    console.log("combined filters result", filtered)
+    createHtmlTable(filtered)
 }
