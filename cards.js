@@ -41,12 +41,7 @@ function fetchCharacter(data) {
         })
         createCard(filterCharacters)
     })
-
-
-
 }
-
-
 
 //....................................................................................................................
 // 3- createCard  and data in it
@@ -57,6 +52,8 @@ function createCard(ele) {
     cardContainer.innerHTML = "";
     ele.forEach((ele) => {
         let myCard = document.createElement("div")
+        myCard.classList.add("col.6")
+        myCard.classList.add("col.sm-4")
         cardContainer.appendChild(myCard)
 
 
