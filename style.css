@@ -20,3 +20,18 @@
     text-align: center;
     color: red;
 }
+
+img {
+    height: 15rem;
+    width: 18rem;
+}
+
+.w-h {
+    width: 15rem;
+    height: 10rem;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}

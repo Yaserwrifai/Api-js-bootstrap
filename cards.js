@@ -52,12 +52,10 @@ function createCard(ele) {
     cardContainer.innerHTML = "";
     ele.forEach((ele) => {
         let myCard = document.createElement("div")
-        myCard.classList.add("col.6")
-        myCard.classList.add("col.sm-4")
+        myCard.classList.add("p-2")
+        myCard.classList.add("wrap")
+
         cardContainer.appendChild(myCard)
-
-
-
 
         let img = document.createElement("img");
         img.setAttribute("src", ele.img);
@@ -65,31 +63,33 @@ function createCard(ele) {
         img.classList.add("card-img-top");
         myCard.appendChild(img);
 
+
         let cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
+        cardBody.classList.add("w-h");
 
-        let h3 = document.createElement("h3");
-        h3.classList.add("card-title");
-        h3.innerHTML = ele.name;
+        let h4 = document.createElement("h4");
+        h4.classList.add("card-title");
+        h4.innerHTML = ele.name;
 
         let p = document.createElement("p");
         p.classList.add("card-text");
-        if (ele.birthday == "Unknown") { p.innerHTML = "Birth unknown in the data" } else { p.innerHTML = ele.birthday }
+        if (ele.birthday == "Unknown") { p.innerHTML = "Birth unknown" } else { p.innerHTML = ele.birthday }
 
         let collapseButton = document.createElement("a");
         collapseButton.classList.add("btn");
         collapseButton.classList.add("btn-primary");
 
-        collapseButton.innerHTML = "See More";
+        collapseButton.innerHTML = "More";
         collapseButton.addEventListener("click", () => {
-            if (collapseButton.innerHTML === "See More") {
-                collapseButton.innerHTML = "See Less";
+            if (collapseButton.innerHTML === "More") {
+                collapseButton.innerHTML = "Less";
             } else {
-                collapseButton.innerHTML = "See More"
+                collapseButton.innerHTML = "More"
             }
         })
-        collapseButton.setAttribute("data-toggle", "collapse")
-        collapseButton.setAttribute("data-target", "#" + ele.nickname)
+        collapseButton.setAttribute("data-toggle", "collapse");
+        collapseButton.setAttribute("data-target", "#" + ele.nickname);
 
         let mycollapse = document.createElement("div");
         mycollapse.classList.add("collapse");
@@ -110,12 +110,13 @@ function createCard(ele) {
 
         //--------------------------------------------------------
         // cardContainer.appendChild(img);
-        cardBody.appendChild(h3);
+        cardBody.appendChild(h4);
         cardBody.appendChild(p);
         cardBody.appendChild(collapseButton);
 
         myCard.appendChild(cardBody);
-        cardContainer.appendChild(mycollapse);
+        //cardContainer.appendChild(mycollapse);
+        myCard.appendChild(mycollapse);
         //------------------------------------------------------
     })
 }
